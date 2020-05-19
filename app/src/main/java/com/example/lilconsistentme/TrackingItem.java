@@ -33,13 +33,12 @@ public class TrackingItem {
     }
 
     public void updatePoints(int numMenuItems) {
-        int freqNum =(frequency.equals("Day")? 1 : 7);
+        double howOften =(frequency.equals("Day")? 1f : 7f)/numTimes;
 
         //Derive hp
-        this.hp = (WEEK_IN_MILLIS / numMenuItems) * (freqNum / numTimes);
-
+        this.hp = (long)((WEEK_IN_MILLIS / numMenuItems) * howOften);
         //Derive lvl pts
-        this.pts = (300 / numMenuItems) * (freqNum / numTimes);
+        this.pts = (long)((300 / numMenuItems) * howOften);
     }
 
     private void deriveGoals(){
