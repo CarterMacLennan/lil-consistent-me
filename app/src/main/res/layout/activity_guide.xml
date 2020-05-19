@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuideActivity"
+    android:background="@color/bg_purple">
+
+    <TextView
+        android:id="@+id/title_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spacemono_regular"
+        android:gravity="center_horizontal"
+        android:text="GUIDE"
+        android:textColor="@color/selected_peach"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textview_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_guide" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal"
+                android:text="TIPS:"
+                android:textColor="@color/yeti_yellow_light"
+                android:textSize="26sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal"
+                android:text="Delete an Activity:"
+                android:textColor="@color/yeti_blue"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:fontFamily="@font/spacemono_regular"
+                android:text="@string/guide_delete"
+                android:textColor="@color/yeti_white"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spacemono_bold"
+                android:paddingTop="16dp"
+                android:gravity="center_horizontal"
+                android:text="HEALTH:"
+                android:textColor="@color/yeti_yellow_light"
+                android:textSize="26sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal"
+                android:text="Health Bar:"
+                android:textColor="@color/yeti_blue"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:fontFamily="@font/spacemono_regular"
+                android:text="@string/guide_health"
+                android:textColor="@color/yeti_white"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal"
+                android:text="Hp:"
+                android:textColor="@color/yeti_blue"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:fontFamily="@font/spacemono_regular"
+                android:text="@string/guide_hp"
+                android:textColor="@color/yeti_white"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal"
+                android:paddingTop="16dp"
+                android:text="LEVEL:"
+                android:textColor="@color/yeti_yellow_light"
+                android:textSize="26sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal"
+                android:text="Level Bar:"
+                android:textColor="@color/yeti_blue"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:fontFamily="@font/spacemono_regular"
+                android:text="@string/guide_level"
+                android:textColor="@color/yeti_white"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal"
+                android:text="Pts:"
+                android:textColor="@color/yeti_blue"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+
+                android:fontFamily="@font/spacemono_regular"
+                android:text="@string/guide_pts"
+                android:textColor="@color/yeti_white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textview_exit"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_save_updated"
+        android:fontFamily="@font/spacemono_regular"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="EXIT"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

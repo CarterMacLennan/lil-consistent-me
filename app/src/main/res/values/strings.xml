@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Lil Consistent Me</string>
+    <string name="developer_name">Carter MacLennan</string>
+    <string name="left_quote"> Don\'t doubt ur vibe - Elon Musk</string>
+    <string name="character_hungry">Tap me, I\'m hungry!</string>
+    <string name="character_feed">Tap to feed me!</string>
+    <string name="character_selectActivity">Select your Activity</string>
+    <string name="title_activity_right_">Right_Activity</string>
+    <string name="app_name_capitalized">LIL CONSISTENT ME</string>
+    <string name="developer_name_capitalized">CARTER MACLENNAN</string>
+    <string name="TrackingItemList">TrackingItemList</string>
+    <string name="todo_dashboard">- Swipe Right to go to the Menu</string>
+    <string name="todo_progress">- Swipe Left to visualize your progress</string>
+    <string name="todo_addActivity">- Tap your Yeti to add an activity</string>
+    <string name="todo_feed">- Feed your yeti by opening your menu, selecting your activity and tapping him</string>
+    <string-array name="spinner_options">
+        <item>Day</item>
+        <item>Week</item>
+    </string-array>
+    <string name="title_activity_right">RightActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_tracking">TrackingActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="guide_health">
+        Your Yeti\'s health bar is a 24 hour countdown timer. Once it reaches 0, it dies.
+    </string>
+    <string name="guide_hp">
+       Health Points are used to increase your Yeti\'s health. The health points received by performing an activity is dependent on the frequency, and the current number of activities.
+    </string>
+    <string name="guide_level">
+        Your Yeti\'s level is incremented whenever the points bar is filled.
+    </string>
+    <string name="guide_pts">
+        Points are used to increase your Yeti\'s level. The points received by performing an activity is dependent on the frequency, and the current number of activities.
+    </string>
+    <string name="guide_delete">
+        You can delete an activity by holding down on the activity item on the menu. Be careful, you won\'t be able to recover your tracking data.
+    </string>
+</resources>

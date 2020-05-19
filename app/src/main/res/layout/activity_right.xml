@@ -1,0 +1,93 @@
+<androidx.fragment.app.FragmentTabHost
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_purple">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/title_consistencyTracking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spacemono_bold"
+            android:gravity="center"
+            android:text="CONSISTENCY TRACKING"
+            android:textColor="@color/white"
+            android:textSize="42dp" />
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_consistencyTracking"
+            android:paddingTop="16dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"/>
+
+    <FrameLayout
+        android:id="@android:id/tabcontent"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        android:layout_below="@android:id/tabs"
+        android:layout_above="@id/navigation"
+        android:background="@color/bg_purple"
+        android:clickable="false" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentBottom="true">
+
+            <ImageButton
+                android:id="@+id/arrow_left"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/arrow_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/currentTrackingItemName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/currentTrackingItemName"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/spacemono_bold"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/yeti_white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="12345671234567" />
+
+            <ImageButton
+                android:id="@+id/arrow_right"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/arrow_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/currentTrackingItemName"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</androidx.fragment.app.FragmentTabHost>
+

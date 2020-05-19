@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#A2D4EB</color>
+    <color name="colorPrimaryDark">#FD7D00</color>
+    <color name="colorAccent">#000</color>
+    <color name="bg_purple">#263B5E</color>
+    <color name="bg_old_purple">#8081DC</color>
+    <color name="gt40_orange">#FD7D00</color>
+    <color name="gt40_orangeDark">#F55109</color>
+    <color name="bg_white">#EAF4FE</color>
+    <color name="bg_transparent_white_tinted">#A6A3DD</color>
+    <color name="bg_transparent_white">#66FFFFFF</color>
+    <color name="delete">#FF0200</color>
+    <color name="bg_item_selected">#ae80dc</color>
+    <color name="bg_green">#44bd32</color>
+    <color name="bg_white_diff">#dfe4ea</color>
+    <color name="selected_pink">#ff7675</color>
+    <color name="green_play">#44bd32</color>
+    <color name="selected_peach">#ff7675</color>
+    <color name="white">#FFF</color>
+    <color name="yeti_yellow_light">#fff069</color>
+    <color name="yeti_yellow_dark">#f2d442</color>
+    <color name="yeti_white">#dfdede</color>
+    <color name="yeti_blue">#60c6d0</color>
+    <color name="yeti_pink">#e76393</color>
+    <color name="white_ice">#dfe4ea</color>
+</resources>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_purple"
+    tools:context=".MainActivity"
+    android:splitMotionEvents="false">
+    <TextView
+        android:id="@+id/text_countdown"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/spacemono_bold"
+        android:textAlignment="center"
+        android:textColor="@color/delete"
+        android:textSize="22sp"
+        android:text="24:00:00"
+        app:layout_constraintBottom_toTopOf="@id/text_score"
+        app:layout_constraintEnd_toEndOf="@+id/button_yeti"
+        app:layout_constraintStart_toStartOf="@+id/button_yeti" />
+
+    <TextView
+        android:id="@+id/text_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/spacemono_bold"
+        android:text="0pts"
+        android:textAlignment="center"
+        android:textColor="@color/green_play"
+        android:textSize="22sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_yeti"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:background="@drawable/yeti"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainer_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.50"
+        app:layout_goneMarginBottom="75dp"/>
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:splitMotionEvents="false"/>
+
+    <TextView
+        android:id="@+id/text_dialogue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/spacemono_bold"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_yeti"
+        app:layout_constraintEnd_toEndOf="@+id/button_yeti"
+        app:layout_constraintStart_toStartOf="@+id/button_yeti"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="Select your activity or\ntap me to close the menu" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_hp"
+        style="@android:style/Widget.Material.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:max="86400000"
+        android:progress="86400000"
+        android:progressTint="@color/delete"
+        app:layout_constraintEnd_toEndOf="@+id/button_yeti"
+        app:layout_constraintStart_toStartOf="@+id/button_yeti"
+        app:layout_constraintTop_toBottomOf="@+id/button_yeti" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_lvl"
+        style="@android:style/Widget.Material.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:max="100"
+        android:progress="100"
+        android:progressTint="@color/green_play"
+        app:layout_constraintEnd_toEndOf="@+id/button_yeti"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/button_yeti"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_hp" />
+
+    <TextView
+        android:id="@+id/textview_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/spacemono_bold"
+        android:text="hp"
+        android:textColor="@color/delete"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar_hp"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar_hp"
+        app:layout_constraintTop_toTopOf="@+id/progressBar_hp" />
+
+    <TextView
+        android:id="@+id/textview_lvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/spacemono_bold"
+        android:gravity="center_vertical"
+        android:text="lvl 0"
+        android:textColor="@color/green_play"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar_lvl"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar_lvl"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_hp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_lvl"
+        tools:layout_editor_absoluteX="16dp"
+        android:padding="16dp"
+        android:splitMotionEvents="false">
+
+        <TextView
+            android:id="@+id/title_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spacemono_bold"
+            android:text="TO DO:"
+            android:textColor="@color/selected_peach"
+            android:textSize="18sp"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="557dp" />
+
+        <TextView
+            android:id="@+id/todo_dashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/spacemono_regular"
+            android:text="@string/todo_dashboard"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="557dp" />
+
+        <TextView
+            android:id="@+id/todo_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/spacemono_regular"
+            android:text="@string/todo_progress"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="557dp" />
+
+        <TextView
+            android:id="@+id/todo_addActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/spacemono_regular"
+            android:text="@string/todo_addActivity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="557dp" />
+
+        <TextView
+            android:id="@+id/todo_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/spacemono_regular"
+            android:text="@string/todo_feed"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="557dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
