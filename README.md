@@ -5,6 +5,13 @@ A Tamagotchi inspired consistency tracker for Android
 <h2 align="center"><b>LilConsistentMe</b></h2>
 <h4 align="center">A Tamagotchi inspired Consistency Tracker</h4>
 
+### Description
+
+Your Yeti is HUNGRY and the only way to feed him is by accomplishing your activities! These activities can be anything you want to be more consistent at. It doesn't matter whether its snowshoeing, reading, or making your bed; all that matters is he's hungry! Unfortunately, if you don't accomplish you activities not only will you miss out on accomplishing your goals, but he .... dies. 
+
+By performing your activities not only does it give you health points, but level points as well! The amount of hp and lvl points you complete is dependent on how frequently you're performing the activity as well as the number of activities you're tracking. As you level up it gets incrementally harder. However, in the near future you will be able to unlock accessories for your Yeti as you level up!
+
+By specifying the number of times a day/week that you want to perform your activity, you're able to visualize your daily and/or weekly progress! As well as monitor the number of days/weeks you reached your goals in a row, your longest streak, and your feature goals!
 ### Screenshots
 
 <p><img src="/Screenshots//main.png" width="150">
@@ -30,11 +37,3 @@ A Tamagotchi inspired consistency tracker for Android
 - A quick tutorial on how to use the app upon starting the application for the first time.
 - Long click a tracking item to remove it from the menu. 
 - Dashboard containing an updated guide on how to use the application.
- 
-### Description
-
-Your Yeti is HUNGRY and the only way to feed him is by accomplishing your activities! These activities can be anything you want to be more consistent at. It doesn't matter whether its snowshoeing, reading, or making your bed; all that matters is he's hungry! Unfortunately, if you don't accomplish you activities not only will you miss out on accomplishing your goals, but he .... dies. 
-
-By performing your activities not only does it give you health points, but level points as well! The amount of hp and lvl points you complete is dependent on how frequently you're performing the activity as well as the number of activities you're tracking. As you level up it gets incrementally harder. However, in the near future you will be able to unlock accessories for your Yeti as you level up!
-
-By specifying the number of times a day/week that you want to perform your activity, you're able to visualize your daily and/or weekly progress! As well as monitor the number of days/weeks you reached your goals in a row, your longest streak, and your feature goals!
