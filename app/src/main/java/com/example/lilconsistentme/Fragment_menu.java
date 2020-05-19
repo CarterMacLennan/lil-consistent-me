@@ -231,11 +231,17 @@ public class Fragment_menu extends Fragment implements View.OnLongClickListener,
             public void onClick(View view) {
                 //DELETE ITEM
                 mTrackingItemList.remove(pos-1);
-                updateAddedPts();
-                updateVisibility();
                 item[pos - 1].setBackgroundResource(R.drawable.bg_item);
+
+                //Update HP & lvl pts
+                for(int i=0;i<mTrackingItemList.size();i++)
+                    mTrackingItemList.get(i).updatePoints(mTrackingItemList.size());
+
                 saveList();
 
+                //Update UI
+                updateAddedPts();
+                updateVisibility();
                 alertDialog.dismiss();
             }
         });
