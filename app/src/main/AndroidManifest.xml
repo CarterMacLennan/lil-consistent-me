@@ -12,19 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".GuideActivity"></activity>
-        <activity android:name=".Guide_Settings" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="nosensor">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RightActivity" />
-        <activity android:name=".LeftActivity" />
-        <activity android:name=".DefineActivity" />
-        <activity android:name=".FrequencyActivity" />
-        <activity android:name=".DiedActivity" />
+        <activity android:name=".RightActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".LeftActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".DefineActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".FrequencyActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".DiedActivity" android:screenOrientation="nosensor"/>
     </application>
 
 </manifest>

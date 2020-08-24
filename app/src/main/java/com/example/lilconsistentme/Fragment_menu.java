@@ -78,7 +78,7 @@ public class Fragment_menu extends Fragment implements View.OnLongClickListener,
                 startActivity(intent);
             }
         });
-        String packageName = "com.example.lilconsistentme";
+        String packageName = "com.myappproject.lilconsistentme";
 
         for (int i = 0; i < MAX_NUM_ITEMS; i++) {
             //Get IDs

@@ -2,6 +2,7 @@ package com.example.lilconsistentme;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
@@ -21,8 +22,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -31,7 +34,7 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
     private TextView dialogue, score, textView_lvl;
     private float x1, x2, y1, y2;
     private Vibrator vibrator;
-    private int curScore,lvl=0;
+    private int curScore, lvl = 0;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private View fragmentView;
@@ -44,26 +47,26 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
     //Timer
     private CountDownTimer mCountDownTimer;
     private TextView mTextViewCountDown;
-    private final long WEEK_IN_MILLIS = 7*24*60*60*1000;
+    private final long WEEK_IN_MILLIS = 7 * 24 * 60 * 60 * 1000;
     private long mTimeLeftInMillis, mEndTime;
-    private ProgressBar progressBar_hp,progressBar_lvl;
+    private ProgressBar progressBar_hp, progressBar_lvl;
 
     @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Vibrator
+        //For buttons to Vibrate
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        //Settings
-        sharedPreferences = getApplicationContext().getSharedPreferences("prefs",MODE_PRIVATE);
+        //Shared Prefs
+        sharedPreferences = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         //Initialize Views
-        textView_lvl=findViewById(R.id.textview_lvl);
+        textView_lvl = findViewById(R.id.textview_lvl);
         progressBar_hp = findViewById(R.id.progressBar_hp);
-        progressBar_lvl=findViewById(R.id.progressBar_lvl);
+        progressBar_lvl = findViewById(R.id.progressBar_lvl);
         fragmentView = findViewById(R.id.menu_frag);
         dialogue = findViewById(R.id.text_dialogue);
         ImageButton button = findViewById(R.id.button_yeti);
@@ -71,12 +74,12 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
         button.setOnTouchListener(this);
         findViewById(R.id.layout_main).setOnTouchListener(this);
 
-        //Level
-        lvl= sharedPreferences.getInt("lvl",0);
-        progressBar_lvl.setMax(sharedPreferences.getInt("max_pts",100));
-        textView_lvl.setText("lvl "+lvl);
+        //Set the Level
+        lvl = sharedPreferences.getInt("lvl", 0);
+        progressBar_lvl.setMax(sharedPreferences.getInt("max_pts", 100));
+        textView_lvl.setText("lvl " + lvl);
 
-        //Score
+        //Set the Score on Progress Bar
         score = findViewById(R.id.text_score);
         curScore = sharedPreferences.getInt("total_pts", MODE_PRIVATE);
         score.setText(curScore + "pts");
@@ -93,51 +96,54 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
 
 
     public void button_yeti(View view) {
-        //Vibrate
+        //Make the button vibrate
         vibrator.vibrate(VibrationEffect.createOneShot(15, VibrationEffect.DEFAULT_AMPLITUDE));
 
-        //CLOSE MENU
         if (menuOpen) {
+
+            //Close the menu & update the UI
             menuOpen = false;
             fragmentView = findViewById(R.id.menu_frag);
             closeMenu(fragmentView);
             updateUI();
 
-            //Update to do list if pts were added
-            if(progressBar_lvl.getProgress()>0)
+            //If points were added update the TO-DO list
+            if (progressBar_lvl.getProgress() > 0)
                 editor.putBoolean("todo_feed", false).apply();
             checklistVisibility();
 
-            //De-select items & save the list
-            mTrackingItemList= Fragment_menu.mTrackingItemList;
-            for(int i=0; i<mTrackingItemList.size() ;i++)
+            //De-select all items & save the list
+            mTrackingItemList = Fragment_menu.mTrackingItemList;
+            for (int i = 0; i < mTrackingItemList.size(); i++)
                 mTrackingItemList.get(i).setSelected(false);
             saveList();
         }
-        //OPEN MENU if previous to do has been complete
-        else if(!sharedPreferences.getBoolean("todo_dashboard",true)){//Open Menu
+        //Opens the menu if todo_dashboard has been complete
+        else if (!sharedPreferences.getBoolean("todo_dashboard", true)) {
             menuOpen = true;
             findViewById(R.id.fragmentContainer_menu).setVisibility(View.VISIBLE);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer_menu, new Fragment_menu(), "tag_menu").commit();
         }
     }
-    private void saveList(){
+
+    private void saveList() {
         Gson gson = new Gson();
-        editor.putString("TrackingItemList",gson.toJson(mTrackingItemList)).apply();
+        editor.putString("TrackingItemList", gson.toJson(mTrackingItemList)).apply();
     }
 
-    private void loadList(){
+    private void loadList() {
         SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        String json = sharedPreferences.getString("TrackingItemList",null);
+        String json = sharedPreferences.getString("TrackingItemList", null);
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<TrackingItem>>() {}.getType();
+        Type type = new TypeToken<ArrayList<TrackingItem>>() {
+        }.getType();
         mTrackingItemList = gson.fromJson(json, type);
         if (mTrackingItemList == null)
-                mTrackingItemList = new ArrayList<TrackingItem>();
+            mTrackingItemList = new ArrayList<TrackingItem>();
     }
 
-    private void checklistClear(){
+    private void checklistClear() {
         findViewById(R.id.title_todo).setVisibility(View.GONE);
         findViewById(R.id.todo_dashboard).setVisibility(View.GONE);
         findViewById(R.id.todo_progress).setVisibility(View.GONE);
@@ -145,22 +151,20 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
         findViewById(R.id.todo_feed).setVisibility(View.GONE);
     }
 
-    private void checklistVisibility(){
-        checklistClear();
+    private void checklistVisibility() {
+        //Update which Checklist item is showing
 
-        if(sharedPreferences.getBoolean("todo_dashboard",true)) {
+        checklistClear();
+        if (sharedPreferences.getBoolean("todo_dashboard", true)) {
             findViewById(R.id.todo_dashboard).setVisibility(View.VISIBLE);
             findViewById(R.id.title_todo).setVisibility(View.VISIBLE);
-        }
-        else if(sharedPreferences.getBoolean("todo_addActivity",true)){
+        } else if (sharedPreferences.getBoolean("todo_addActivity", true)) {
             findViewById(R.id.todo_addActivity).setVisibility(View.VISIBLE);
             findViewById(R.id.title_todo).setVisibility(View.VISIBLE);
-        }
-        else if(sharedPreferences.getBoolean("todo_feed",true)){
+        } else if (sharedPreferences.getBoolean("todo_feed", true)) {
             findViewById(R.id.todo_feed).setVisibility(View.VISIBLE);
             findViewById(R.id.title_todo).setVisibility(View.VISIBLE);
-        }
-        else if(sharedPreferences.getBoolean("todo_progress",true)){
+        } else if (sharedPreferences.getBoolean("todo_progress", true)) {
             findViewById(R.id.todo_progress).setVisibility(View.VISIBLE);
             findViewById(R.id.title_todo).setVisibility(View.VISIBLE);
         }
@@ -171,13 +175,13 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                mTimeLeftInMillis=millisUntilFinished;
+                mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }
 
             @Override
             public void onFinish() {
-                Intent intent = new Intent(getApplicationContext(),DiedActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DiedActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -189,30 +193,32 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
         long second = (mTimeLeftInMillis / 1000) % 60;
         long minute = (mTimeLeftInMillis / (1000 * 60)) % 60;
         long hour = ((mTimeLeftInMillis / (1000 * 60 * 60)) % 24);
+
+        //Update the health bar with the current time
         mTextViewCountDown.setText(String.format("%02d:%02d:%02d", hour, minute, second));
         int progress = (int) mTimeLeftInMillis;
         progressBar_hp.setProgress(progress);
     }
 
     private void updateUI() {
-
+        //Add the new points to the current score
         curScore += ptsAdded;
         ptsAdded = 0;
 
-        //Update Lvl
-        while((curScore) >= progressBar_lvl.getMax()) {
+        //Update the Yeti's Level
+        while ((curScore) >= progressBar_lvl.getMax()) {
             curScore = (int) curScore - progressBar_lvl.getMax();
             progressBar_lvl.setMax(progressBar_lvl.getMax() + progressBar_lvl.getMax() / 4);
             lvl++;
-            Log.i("TAG", "curScore: " +curScore +"  progressBarMax: "+ progressBar_lvl.getMax());
+            Log.i("TAG", "curScore: " + curScore + "  progressBarMax: " + progressBar_lvl.getMax());
         }
 
-        //Add Points
-        textView_lvl.setText("lvl "+lvl);
+        //Update the level text & progress bar
+        textView_lvl.setText("lvl " + lvl);
         progressBar_lvl.setProgress(curScore);
         score.setText(curScore + "pts");
 
-        //Update Clock
+        //Add the time to the Clock
         if (timeAdded != 0) {
             mCountDownTimer.cancel();
             if ((mTimeLeftInMillis + timeAdded) >= WEEK_IN_MILLIS)
@@ -223,10 +229,10 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
             timeAdded = 0;
         }
 
-        //Update Dialogue
-        if(menuOpen)
+        //Update the character's Dialogue
+        if (menuOpen)
             dialogue.setText(R.string.character_selectActivity);
-        else if(!sharedPreferences.getBoolean("todo_dashboard",true))
+        else if (!sharedPreferences.getBoolean("todo_dashboard", true))
             dialogue.setText(R.string.character_hungry);
     }
 
@@ -259,21 +265,20 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
             case MotionEvent.ACTION_UP:
                 x2 = touchEvent.getX();
                 y2 = touchEvent.getY();
-                if (x1+100 < x2) {
+                if (x1 + 100 < x2) {
                     Intent intent = new Intent(MainActivity.this, LeftActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slideleft_in, R.anim.slideleft_out);
-                    editor.putBoolean("todo_dashboard",false).apply();
-                } else if (x1 > x2+100){
+                    editor.putBoolean("todo_dashboard", false).apply();
+                } else if (x1 > x2 + 100) {
                     //enable access to data visualization after the other to dos have been complete
-                    if(!sharedPreferences.getBoolean("todo_feed",true)) {
+                    if (!sharedPreferences.getBoolean("todo_feed", true)) {
                         Intent intent = new Intent(MainActivity.this, RightActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slideright_in, R.anim.slideright_out);
                         editor.putBoolean("todo_progress", false).apply();
                     }
-                }
-                else
+                } else
                     button_yeti(v);
                 break;
         }
@@ -289,7 +294,7 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
         loadList();
         checklistVisibility();
 
-        //Timer
+        //Calculate the new End Time
         mEndTime = sharedPreferences.getLong("endTime", System.currentTimeMillis() + WEEK_IN_MILLIS);
         mTimeLeftInMillis = mEndTime - System.currentTimeMillis();
         startTimer();
@@ -298,15 +303,16 @@ public class MainActivity extends FragmentActivity implements View.OnTouchListen
     @Override
     protected void onPause() {
         super.onPause();
-        //Points
-        ptsAdded=0;
-        timeAdded=0;
+        //Set the added points to 0
+        ptsAdded = 0;
+        timeAdded = 0;
 
-        //Score
+        //Save the current score
         editor.putInt("total_pts", curScore);
-        editor.putInt("lvl",lvl);
-        editor.putInt("max_pts",progressBar_lvl.getMax());
-        //Timer
+        editor.putInt("lvl", lvl);
+        editor.putInt("max_pts", progressBar_lvl.getMax());
+
+        //Save the current timer's end time
         editor.putLong("endTime", mEndTime).apply();
         mCountDownTimer.cancel();
     }
