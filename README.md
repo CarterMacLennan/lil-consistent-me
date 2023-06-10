@@ -1,4 +1,5 @@
-# LilConsistentMe (My first major project that got me my first dev internship!)
+# LilConsistentMe 
+## (My first major project that got me my first dev internship!)
 A Tamagotchi inspired consistency tracker for Android
 <p align="center"><a href="https://github.com/btmyles/LilConsistentMe/tree/master"><img src="/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" width="150"></a></p>
 
